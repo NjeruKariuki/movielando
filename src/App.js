@@ -11,7 +11,6 @@ function App() {
   //state of movies
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [loading, setLoading] = useState(true);
 
   //function to search movies
   const searchMovies = async (title) => {
@@ -20,27 +19,8 @@ function App() {
     setMovies(data.Search);
   };
 
-  //dummy data
-  const movie1 =
-  {
-    "Title": "Italian Spiderman",
-    "Year": "2007",
-    "imdbID": "tt2705436",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg"
-  };
-
-  const movie2 =
-  {
-    "Title": " Spiderman",
-    "Year": "2007",
-    "imdbID": "tt2705436",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg"
-  };
-
   useEffect(() => {
-    searchMovies('Spiderman');
+    searchMovies(searchValue);
   }, []);
 
   return (
@@ -49,13 +29,13 @@ function App() {
       <div className="search">
         <input
           placeholder="search for movies"
-          value="superman"
-          onChange={() => { }}
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <img
           src={SearchIcon}
           alt="search icon"
-          onClick={() => { }}
+          onClick={() => searchMovies(searchValue)}
         />
       </div>
 
@@ -63,8 +43,10 @@ function App() {
         movies?.length > 0
           ? (
             <div className="container">
-              <MovieCard movie1={movie1} />
-
+              {
+                movies.map((movie) => (
+                  <MovieCard movie={movie} />
+                ))} 
             </div>
           ) :
           (
