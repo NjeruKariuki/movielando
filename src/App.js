@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import './App.css';
 import SearchIcon from './searchIcon.svg';
+import MovieCard from "./MovieCard";
 
 //omdbi api url
 const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=1e723a75"
@@ -45,21 +46,7 @@ function App() {
       </div>
 
       <div className="container">
-        <div className="movie">
-          <div>
-            <p>{movie1.Year}</p>
-          </div>
-          <div>
-            <img
-              src={movie1.Poster !== 'N/A' ? movie1.Poster : 'https://via.placeholder.com/400'}
-              alt="movie poster"
-            />
-          </div>
-          <div>
-            <span>{movie1.Type}</span>
-            <h3>{movie1.Title}</h3>
-          </div>
-        </div>
+       <MovieCard movie1={movie1} />
       </div>
     </div>
   );
