@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useEffect } from "react";
 import './App.css';
 
+//omdbi api url
+const API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=1e723a75"
+
 function App() {
+
+  //function to search movies
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+    console.log(data.Search);
+  };
+
+  useEffect(()=> {
+    searchMovies('Spiderman');
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+     <h1>MovieLando</h1>
     </div>
   );
 }
