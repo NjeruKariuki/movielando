@@ -15,13 +15,13 @@ function App() {
   };
 
   //dummy data
-  const movie1 = 
-    {
-      "Title": "Italian Spiderman",
-      "Year": "2007",
-      "imdbID": "tt2705436",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg"
+  const movie1 =
+  {
+    "Title": "Italian Spiderman",
+    "Year": "2007",
+    "imdbID": "tt2705436",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg"
   };
 
   useEffect(() => {
@@ -48,6 +48,16 @@ function App() {
         <div className="movie">
           <div>
             <p>{movie1.Year}</p>
+          </div>
+          <div>
+            <img
+              src={movie1.Poster !== 'N/A' ? movie1.Poster : 'https://via.placeholder.com/400'}
+              alt="movie poster"
+            />
+          </div>
+          <div>
+            <span>{movie1.Type}</span>
+            <h3>{movie1.Title}</h3>
           </div>
         </div>
       </div>
